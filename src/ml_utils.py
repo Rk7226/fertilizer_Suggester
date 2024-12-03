@@ -28,7 +28,7 @@ def ensure_model_exists(dataset_path='r.csv'):
     
     return model_path, scaler_path, encoders_path
 
-def train_and_save_model(dataset_path='data/fertilizer_dataset.csv'):
+def train_and_save_model(dataset_path='r.csv'):
     """
     Train and save the machine learning model
     """
