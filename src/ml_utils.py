@@ -37,8 +37,7 @@ def train_and_save_model(dataset_path='r.csv'):
     
     # Check if dataset exists
     if not os.path.exists(dataset_path):
-        print(f"Dataset not found at {dataset_path}. Creating a sample dataset...")
-        create_sample_dataset(dataset_path)
+        raise FileNotFoundError(f"Dataset not found at {dataset_path}. Please provide a valid dataset path.")
     
     # Load dataset
     df = pd.read_csv(dataset_path)
@@ -72,26 +71,6 @@ def train_and_save_model(dataset_path='r.csv'):
     joblib.dump(label_encoders, 'models/label_encoders.pkl')
     
     print("Model training and saving completed!")
-
-def create_sample_dataset(dataset_path):
-    """
-    Create a sample dataset if no dataset is found
-    """
-    sample_data = {
-        'Soil Type': ['Sandy', 'Clay', 'Loamy', 'Sandy', 'Clay'],
-        'Crop Type': ['Wheat', 'Corn', 'Rice', 'Potato', 'Soybean'],
-        'Nitrogen': [50, 75, 60, 40, 65],
-        'Phosphorus': [30, 45, 40, 35, 50],
-        'Potassium': [25, 40, 35, 30, 45],
-        'Temperature': [25, 22, 28, 20, 24],
-        'Humidity': [60, 55, 65, 50, 58],
-        'Moisture': [40, 35, 45, 30, 38],
-        'Fertilizer Name': ['NPK 10-10-10', 'DAP', 'Urea', 'Compost', 'Potash']
-    }
-    
-    df = pd.DataFrame(sample_data)
-    df.to_csv(dataset_path, index=False)
-    print(f"Sample dataset created at {dataset_path}")
 
 class FertilizerPredictionApp:
     def __init__(self, 
