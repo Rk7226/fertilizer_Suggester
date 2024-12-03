@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 
 from src.models import FertilizerInput
 
-def ensure_model_exists(dataset_path='data/Fertilizer Recommendation.csv'):
+def ensure_model_exists(dataset_path='r.csv'):
     """
     Check if model files exist, if not, train and save the model
     """
